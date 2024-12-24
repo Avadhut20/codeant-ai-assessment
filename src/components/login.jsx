@@ -1,12 +1,22 @@
 import React from 'react'
 import { useState } from 'react';
 import Button from './Button';
+import { FaGithub, FaGitlab, FaBitbucket,FaKey  } from 'react-icons/fa';
+import { VscAzureDevops } from "react-icons/vsc";
+import Card from './Card';
+// import { SiMicrosoftazure } from 'react-icons/si';
 
 const Login = () => {
     const [activePlan, setActivePlan] = useState("saas");
     return (
         <div>
-            <div className='flex flex-col justify-center items-center bg-secondary h-screen'>
+            <div className='flex justify-between'>
+            <div className='m-auto'>
+                <Card/>
+                
+            </div>
+           
+            <div className='flex flex-col justify-center items-center bg-secondary h-screen w-1/2'>
             <div className='bg-white flex flex-col justify-center items-center gap-4 w-[672px] h-[500px] py-4'>
                 <div className='flex gap-3   items-center '>
                     <svg width="36" height="41" viewBox="0 0 36 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,18 +53,18 @@ const Login = () => {
 
                 {activePlan === "saas" && (
                     <div className=" flex flex-col gap-3 mt-8">
-                        <Button name="Github" />
-                        <Button name="Bitbucket" />
-                        <Button name="Azure Devops" />
-                        <Button name="GitLab" />
+                        <Button name="Github" icon={FaGithub}/>
+                        <Button name="Bitbucket" icon={FaBitbucket} />
+                        <Button name="Azure Devops" icon={VscAzureDevops}/>
+                        <Button name="GitLab" icon={FaGitlab}/>
                     </div>
                 )}
 
                 {/* Conditionally render the buttons for Self Hosted plan */}
                 {activePlan === "selfHosted" && (
                     <div className="flex flex-col gap-3 mt-8">
-                        <Button name="GitLab" />
-                        <Button name="SSO" />
+                        <Button name="GitLab"  icon={FaGitlab}/>
+                        <Button name="SSO" icon={FaKey } />
                     </div>
                 )}
             </div>
@@ -62,6 +72,7 @@ const Login = () => {
             </div>
             
 
+        </div>
         </div>
     )
 }
